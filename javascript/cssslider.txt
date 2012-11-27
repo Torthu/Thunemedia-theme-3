@@ -1,0 +1,255 @@
+<div id=slides">
+		
+			<div id=overflow">
+			
+				<div class=inner>
+				<?php
+			
+			foreach($featured_news as $post) :
+			  setup_postdata($post);
+				$tags = get_the_tags();
+				if ( has_post_thumbnail() ) { $thumb = wp_get_attachment_image_src ( get_post_thumbnail_id ( $post->ID ), "full-thumbnail"); }
+				else { $thumb[0] = ""; }
+			?>
+					<article style="background: url(<?php echo $thumb[0]; ?>) center center no-repeat;">
+						<h2><span class="bigger"><?php echo $tags[0]->name . count($tags) . print_r($tags[0]); ?></span><br /><a href="<?php the_permalink(); ?>" class="current_news_title"><?php the_title(); ?></a></h2>
+					</article>
+			 <?php endforeach; ?>
+					
+				</div> <!-- .inner -->
+				
+			</div> <!-- #overflow -->
+		
+		</div> <!-- #slides -->*/
+		<!-- Controls and Active Slide Display -->
+	
+		<div id=controls>
+
+			<label for=slide1></label>
+			<label for=slide2></label>
+			<label for=slide3></label>
+			<label for=slide4></label>
+			<label for=slide5></label>
+		
+		</div> <!-- #controls -->
+		
+		<div id=active>
+
+			<label for=slide1></label>
+			<label for=slide2></label>
+			<label for=slide3></label>
+			<label for=slide4></label>
+			<label for=slide5></label>
+			
+		</div> <!-- #active -->
+		
+		/*var iPadLabels = function () {
+				function fix() {
+					var labels = document.getElementsByTagName('label'), 
+						target_id, 
+						el;
+					for (var i = 0; labels[i]; i++) {
+						if (labels[i].getAttribute('for')) {
+							labels[i].onclick = labelClick;
+						}
+					}
+				};
+				function labelClick() {
+					el = document.getElementById(this.getAttribute('for'));
+					if (['radio', 'checkbox'].indexOf(el.getAttribute('type')) != -1) {
+						el.setAttribute('selected', !el.getAttribute('selected'));
+					} else {
+						el.focus();
+					}
+				};
+					return {
+					fix: fix
+				}
+			}();
+			
+			window.onload = function () {
+						
+						iPadLabels.fix();
+					
+			}*/
+			
+			#slide1:checked ~ #slides .inner { margin-left:0; }
+		#slide2:checked ~ #slides .inner { margin-left:-100%; }
+		#slide3:checked ~ #slides .inner { margin-left:-200%; }
+		#slide4:checked ~ #slides .inner { margin-left:-300%; }
+		#slide5:checked ~ #slides .inner { margin-left:-400%; }
+
+
+		#overflow {
+			width: 100%;
+			overflow: hidden;
+		}
+
+		article img, article h2 {
+			width: 80%;
+		}
+
+		#slides .inner {
+			width: 500%;
+			line-height: 0;
+		}
+
+		#slides article {
+			width: 20%;
+			float: left;
+		}
+
+		/* Slider Styling */
+
+		/* Control Setup */
+
+		#controls {
+			margin: -25% 0 0 0;
+			width: 100%;
+			height: 50px;
+		}
+
+		#controls label { 
+			display: none;
+			width: 50px;
+			height: 50px;
+			opacity: 0.3;
+			background: #333;
+		}
+
+		#active {
+			margin: 20% 0 0;
+			text-align: center;
+		}
+
+		#active label {
+			-webkit-border-radius: 5px;
+			-moz-border-radius: 5px;
+			border-radius: 5px;
+			display: inline-block;
+			width: 10px;
+			height: 10px;
+			background: #bbb;
+		}
+
+		#active label:hover {
+			background: #ccc;
+			border-color: #777 !important;
+		}
+
+		#controls label:hover {
+			opacity: 0.8;
+		}
+
+		#slide1:checked ~ #controls label:nth-child(2), 
+		#slide2:checked ~ #controls label:nth-child(3), 
+		#slide3:checked ~ #controls label:nth-child(4), 
+		#slide4:checked ~ #controls label:nth-child(5), 
+		#slide5:checked ~ #controls label:nth-child(1) {
+			background: url('images/next.png') no-repeat;
+			float: right;
+			margin: 0 -70px 0 0;
+			display: block;
+		}
+
+
+		#slide1:checked ~ #controls label:nth-child(5),
+		#slide2:checked ~ #controls label:nth-child(1),
+		#slide3:checked ~ #controls label:nth-child(2),
+		#slide4:checked ~ #controls label:nth-child(3),
+		#slide5:checked ~ #controls label:nth-child(4) {
+			background: url('images/prev.png') no-repeat;
+			float: left;
+			margin: 0 0 0 -70px;
+			display: block;
+		}
+
+		#slide1:checked ~ #active label:nth-child(1),
+		#slide2:checked ~ #active label:nth-child(2),
+		#slide3:checked ~ #active label:nth-child(3),
+		#slide4:checked ~ #active label:nth-child(4),
+		#slide5:checked ~ #active label:nth-child(5) {
+			background: #333;
+			border-color: #333 !important;
+		}
+
+
+		/* Slider Styling */
+
+		#slides {
+			border-radius: 8px;
+			background: #222;
+			height: 400px;
+			box-shadow: 3px 3px 5px 1px #ccc;
+		}
+
+
+	/* Animation */
+
+	#slides .inner {
+		-webkit-transform: translateZ(0);
+		-webkit-transition: all 800ms cubic-bezier(0.770, 0.000, 0.175, 1.000); 
+		-moz-transition: all 800ms cubic-bezier(0.770, 0.000, 0.175, 1.000); 
+		-ms-transition: all 800ms cubic-bezier(0.770, 0.000, 0.175, 1.000); 
+		 -o-transition: all 800ms cubic-bezier(0.770, 0.000, 0.175, 1.000); 
+			transition: all 800ms cubic-bezier(0.770, 0.000, 0.175, 1.000); /* easeInOutQuart */
+
+		-webkit-transition-timing-function: cubic-bezier(0.770, 0.000, 0.175, 1.000); 
+		-moz-transition-timing-function: cubic-bezier(0.770, 0.000, 0.175, 1.000); 
+		-ms-transition-timing-function: cubic-bezier(0.770, 0.000, 0.175, 1.000); 
+		 -o-transition-timing-function: cubic-bezier(0.770, 0.000, 0.175, 1.000); 
+			transition-timing-function: cubic-bezier(0.770, 0.000, 0.175, 1.000); /* easeInOutQuart */
+	}
+	#slides article {
+		width: 992px;
+		height:400px;
+		border-radius: 8px;
+		position:relative;
+	}
+	
+	#slides h2 {
+		background: rgba(0,0,0,0.4);
+		padding: 12px;
+		width: 100%;
+		position: absolute;
+		bottom: 0;
+	}
+	#slides a {
+		color: #fff;
+	}
+	
+	#slider {
+		-webkit-transform: translateZ(0);
+		-webkit-transition: all 0.5s ease-out;
+		-moz-transition: all 0.5s ease-out;
+		-o-transition: all 0.5s ease-out;
+		transition: all 0.5s ease-out;
+	}
+
+	#controls label{
+		-webkit-transform: translateZ(0);
+		-webkit-transition: opacity 0.2s ease-out;
+		-moz-transition: opacity 0.2s ease-out;
+		-o-transition: opacity 0.2s ease-out;
+		transition: opacity 0.2s ease-out;
+	}
+
+	#slide1:checked ~ #slides article:nth-child(1) .info,
+	#slide2:checked ~ #slides article:nth-child(2) .info,
+	#slide3:checked ~ #slides article:nth-child(3) .info,
+	#slide4:checked ~ #slides article:nth-child(4) .info,
+	#slide5:checked ~ #slides article:nth-child(5) .info {
+		opacity: 1;
+		-webkit-transition: all 1s ease-out 0.6s;
+		-moz-transition: all 1s ease-out 0.6s;
+		-o-transition: all 1s ease-out 0.6s;
+		transition: all 1s ease-out 0.6s;
+	}
+
+	.info, #controls, #slides, #active, #active label, .info h3, .desktop, .tablet, .mobile {
+		-webkit-transform: translateZ(0);
+		-webkit-transition: all 0.5s ease-out;
+		-moz-transition: all 0.5s ease-out;
+		-o-transition: all 0.5s ease-out;
+		transition: all 0.5s ease-out;
+	}
