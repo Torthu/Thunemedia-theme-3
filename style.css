@@ -171,15 +171,15 @@ a:hover, a:visited {
 			header nav a:hover {
 				background: #4D4540;
 			}
-			#main-nav li.active a, header li.current-menu-item a {
+			#main-nav li.active a, header li.current-menu-item a, header .current-page-ancestor a {
 				background: #fff;
 				color: #2D2926 !important;
 			}
-		#main-nav li.active, header li.current-menu-item {
+		#main-nav li.active, header li.current-menu-item, header .current-page-ancestor {
 			background: #fff;
 			position:relative;
 		}
-			#main-nav li.active:after, header .current-menu-item:after {
+			#main-nav li.active:after, header .current-menu-item:after, header .current-page-ancestor:after {
 				position:absolute;
 				left:0;
 				bottom: -7px;
