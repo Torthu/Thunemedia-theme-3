@@ -40,7 +40,8 @@ function thune_setup() {
 	add_image_size( 'eight-thumbnail', 750, 400, true);
 	add_image_size( 'nine-thumbnail', 847, 400, true);
 	add_image_size( 'five-thumbnail', 474, 354, true);
-	add_image_size( 'three-thumbnail', 303, 226, true);	
+	add_image_size( 'three-thumbnail', 303, 226, true);
+	add_image_size( 'four-thumbnail', 245, 170, true);	
 	
 }
 

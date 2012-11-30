@@ -49,21 +49,17 @@ get_header(); ?>
 					</ul>
 				</nav>
 			<?php } */?>
-			
-			
-			
-				<h1 class="container text-center" <?=$h1_custom_css ?>><?=$h1_text ?></h1>
 
 				<?php if(has_post_thumbnail()) { 
 					$thumb = wp_get_attachment_image_src ( get_post_thumbnail_id ( $post->ID ), "full-thumbnail");	
 				?>	
-					<div class="media-wrapper">
+					<div class="media-wrapper" style="<?=get_post_custom_values('media-wrapper-css', $post->ID)[0]; ?>">
 						<div class="container">
 							<img src="<?=$thumb[0] ?>" alt="" class="responsive" />
 						</div>
 					</div>
 				<?php } ?>
-			
+				<h1 class="text-center standard-padding container" <?=$h1_custom_css ?>><?=$h1_text ?></h1>			
 				<?php the_content(); ?>
 			</div>
 		</div>

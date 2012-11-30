@@ -54,8 +54,8 @@ h1 {
 	font-size: 55px;
 	line-height: 1;
 	padding-top: 8px;
-	margin-top: 25px !important;
-	margin-bottom: 25px !important;
+	margin-top: 25px;
+	margin-bottom: 25px;
 	/*color: #68503E;*/
 	/*color: #4B3A2E;*/
 	color: #558851;
@@ -261,29 +261,24 @@ a:hover, a:visited {
 	  transition: 0.6s ease-in-out left;
 	}
 	.carousel .item a h2 {
-		position: absolute; 
-		bottom: 25px;
-		left: 25px;
+		position: absolute;
+		padding: 25px; 
+		bottom: 0px;
+		right:0px;
+		left: 0px;
 		margin:0;
 		z-index: 30;
 		line-height: 30px;
 		color: #fff;
 	}
-	.carousel .item:after {
-		background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwLjIiLz4KICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwLjYiLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
-		background: -moz-linear-gradient(top,  rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.6) 100%);
-		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.2)), color-stop(100%,rgba(0,0,0,0.6)));
-		background: -webkit-linear-gradient(top,  rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.6) 100%);
-		background: -o-linear-gradient(top,  rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.6) 100%);
-		background: -ms-linear-gradient(top,  rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.6) 100%);
-		background: linear-gradient(to bottom,  rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.6) 100%);
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#33000000', endColorstr='#99000000',GradientType=0 );
+	.carousel h2:before {
+		background: rgba(0,0,0,0.6);
+		top: 0;
 		left:0;
 		right:0;
-		bottom: 0;
-		height: 75px;
+		bottom:0;
+		z-index: -1; /* ugly hack */
 		position: absolute;
-		z-index: 20;
 		content:'';
 	}
 	.carousel .item img {
@@ -351,8 +346,10 @@ a:hover, a:visited {
 		
 		/*background: #BAB5AF;*/
 		background: rgba(45,41,38,0.3);
-		/*border: 1px solid #A7A098;*/
-		border: 1px solid #fff;
+		border: 1px solid #A7A098;
+		border-left: 0;
+		border-right:0;
+		/*border: 1px solid #fff;#A7A098*/
 /*		background: -moz-radial-gradient(center, ellipse cover,  rgba(167,160,152,1) 0%, rgba(167,160,152,0) 100%);
 background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(167,160,152,1)), color-stop(100%,rgba(167,160,152,0)));
 background: -webkit-radial-gradient(center, ellipse cover,  #fff 0%,rgba(255,255,255,0) 100%);
@@ -368,13 +365,13 @@ background: -o-radial-gradient(center, ellipse cover,  rgba(45,41,38,1) 0%,rgba(
 background: -ms-radial-gradient(center, ellipse cover,  rgba(45,41,38,1) 0%,rgba(101,92,86,1) 100%);
 background: radial-gradient(ellipse at center,  rgba(45,41,38,1) 0%,rgba(101,92,86,1) 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2d2926', endColorstr='#655c56',GradientType=1 );*/
-background: rgb(101,92,86);
+/*background: rgb(101,92,86);
 background: -moz-radial-gradient(center, ellipse cover,  rgba(101,92,86,1) 0%, rgba(45,41,38,1) 100%);
 background: -webkit-radial-gradient(center, ellipse cover, rgba(101,92,86,1) 0%, rgba(45,41,38,1) 100%);
 background: -o-radial-gradient(center, ellipse cover,  rgba(101,92,86,1) 0%,rgba(45,41,38,1) 100%);
 background: -ms-radial-gradient(center, ellipse cover,  rgba(101,92,86,1) 0%,rgba(45,41,38,1) 100%);
 background: radial-gradient(ellipse at center,  rgba(101,92,86,1) 0%,rgba(45,41,38,1) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#655c56', endColorstr='#2d2926',GradientType=1 );
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#655c56', endColorstr='#2d2926',GradientType=1 );*/
 
 
 
@@ -392,6 +389,8 @@ table.zebra {
 }
 .zebra li {
 	border: 1px solid #ccc;
+	padding: 12px;
+	margin: 0;
 }
 	.zebra td, .zebra th {
 		padding: 12px;
