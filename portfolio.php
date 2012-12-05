@@ -14,8 +14,9 @@
  */
 
 get_header(); ?>
-	<div class="std-wrapper">
-		<h1><?php the_title(); ?></h1>
+	<div class="container">
+		<h1 class="six columns no-left-padding"><?php the_title(); ?></h1>
+			<a class="three columns right btn btn-large no-padding btn-green clear-right" href="">Github</a>
 		<?php 
 			if ( have_posts() ) while ( have_posts() ) : the_post(); 
 				$project_pages = get_pages( array( 'child_of' => $post->ID, 'sort_column' => 'post_date', 'sort_order' => 'desc' ) );
@@ -27,19 +28,21 @@ get_header(); ?>
 				<div class="wrapper post_thumbnail" style="background: url(<?php echo $thumb[0]; ?>) center center no-repeat;">
 				</div>	
 			<?php endif; ?>	
-	
-		<h2>Ferdigstilte sider</h2>
+	</div>
+	<div class="container">
 		<?php
-			foreach( $project_pages as $page ) {		
+			$i = 0;
+			foreach( $project_pages as $page ) {
+				$i++;		
 				$content = $page->post_content;
 				$thumb = wp_get_attachment_image_src ( get_post_thumbnail_id ( $page->ID ), "five-thumbnail");
 
 				$content = apply_filters( 'the_content', $content );
 			?>
-				<div class="two_half_cols left" >
+				<div class="eight columns <?=($i%2==0?"no-right-padding":"no-left-padding");?>">
 					<a class="block big" href="<?php echo get_page_link( $page->ID ); ?>">
-						<img style="width: 100%;height:auto;border:1px solid #c7c7c7;" src="<?=$thumb[0]?>" alt="" />
-						<?=$page->post_title; ?><div class="right arrow_box"> </div>
+						<img class="responsive block" src="<?=$thumb[0]?>" alt="" />
+						<h2 class="bebas black-box"><?=$page->post_title; ?></h2>
 					</a>
 				</div>
 			<?php

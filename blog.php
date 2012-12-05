@@ -10,24 +10,22 @@
  *
  * @package Thune Media
  * @subpackage thunemedia.no
- * @since Thune 1.0
+ * @since Thune 3.0
  */
 
 get_header(); ?>
+    <div class="container">	
+		<article class="sixteen columns blogpost no-padding">	
+				<?php if(has_post_thumbnail()):
+						$thumb = wp_get_attachment_image_src ( get_post_thumbnail_id ( $post->ID ), "full-thumbnail");
+				?>
+				<h1><?=post_title(); ?></h1>
+				<div class="wrapper post-thumbnail" style="background: url(<?php echo $thumb[0]; ?>) center center no-repeat;"></div>	
+				<?php endif; ?>
+			
+				<?=$post->post_content; ?>
+		</article>
 
-    <div class="container">
-		
-		<h1><?php the_title(); ?></h1>
-			
-		<?php if(has_post_thumbnail()):
-				$thumb = wp_get_attachment_image_src ( get_post_thumbnail_id ( $post->ID ), "full-thumbnail");
-		?>
-			<div class="wrapper post-thumbnail" style="background: url(<?php echo $thumb[0]; ?>) center center no-repeat;">
-			</div>	
-		<?php endif; ?>
-			
-		<?=$post->post_content; ?>
-			
 			<?php
 				// get posts to dispaly in blog
 				$wp_query = new WP_Query('numberposts=12');//get_posts('numberposts=12');
@@ -57,7 +55,7 @@ get_header(); ?>
 			 </div>
 			 <?php */ ?>
 		 </div>
-		 <?php get_sidebar(); ?>
+		 <?php // get_sidebar(); ?>
 	</div>
 
 <?php get_footer(); ?>

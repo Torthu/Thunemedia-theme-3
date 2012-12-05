@@ -51,13 +51,14 @@ get_header(); ?>
 			<?php } */?>
 
 				<?php if(has_post_thumbnail()) { 
-					$thumb = wp_get_attachment_image_src ( get_post_thumbnail_id ( $post->ID ), "full-thumbnail");	
+					$thumb = wp_get_attachment_image_src ( get_post_thumbnail_id ( $post->ID ), "full-thumbnail");
+					$mediaWrapperCss = get_post_custom_values('media-wrapper-css', $post->ID);
 				?>	
-					<div class="media-wrapper" style="<?=get_post_custom_values('media-wrapper-css', $post->ID)[0]; ?>">
+					<!-- <div class="media-wrapper" style="<?=$mediaWrapperCss[0]; ?>"> -->
 						<div class="container">
 							<img src="<?=$thumb[0] ?>" alt="" class="responsive" />
 						</div>
-					</div>
+					<!-- </div> -->
 				<?php } ?>
 				<h1 class="text-center standard-padding container" <?=$h1_custom_css ?>><?=$h1_text ?></h1>			
 				<?php the_content(); ?>

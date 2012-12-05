@@ -15,7 +15,7 @@
 							<span class="round-link-image-container">
 								<img src="<?php bloginfo('template_directory'); ?>/images/forrst-green.png" alt="" />
 							</span>
-							forrst.com/torthu
+							forrst.com/people/Torthu
 						</a>
 					</li>
 					<li  class="five columns inline-block no-margin">

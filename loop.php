@@ -18,16 +18,8 @@
  * @since Kvarteret 1.0
  */
 
- /* Display navigation to next/previous pages when applicable */ 
- if ( $wp_query->max_num_pages > 1 ) : ?>
-	<div id="nav-above" class="navigation">
-		<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'twentyten' ) ); ?></div>
-		<div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'twentyten' ) ); ?></div>
-	</div><!-- #nav-above -->
-<?php endif; ?>
-
-<?php /* If there are no posts to display, such as an empty archive page */ ?>
-<?php if ( ! have_posts() ) : ?>
+ /* If there are no posts to display, such as an empty archive page */
+if ( ! have_posts() ) : ?>
 	<div id="post-0" class="post error404 not-found">
 		<h1 class="entry-title"><?php _e( 'Not Found', 'twentyten' ); ?></h1>
 		<div class="entry-content">
@@ -52,46 +44,35 @@
 	 *
 	 * Without further ado, the loop:
 	 */ ?>
-<?php while ( have_posts() ) : the_post(); ?>
 
-<?php /* How to display all other posts. */ ?>
-	<h2><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'twentyten' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?> <div class="right arrow_box"> </div></a></h2>
-
-	<div class="entry-meta">
-		<?php twentyten_posted_on(); ?>
-	</div><!-- .entry-meta -->
-
-	<?php if ( is_archive() || is_search() ) : // Only display excerpts for archives and search. ?>	
-		<div class="entry-summary">
-			<?php the_excerpt(); ?>
-		</div><!-- .entry-summary -->	
-	<?php else : ?>
-		<div class="entry-content">
-			<?php the_content( __( '&nbsp;', 'twentyten' ) ); ?>
-			<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'twentyten' ), 'after' => '</div>' ) ); ?>
-		</div><!-- .entry-content -->
+<?php 
+	$last_post = "";
+	while ( have_posts() ) : the_post(); 
+?>
+	<?php if(get_the_date() != $last_post) : ?>
+		<div class="three columns clear-left blog-meta text-center offset-top-by-one">
+			<div class="date inline-block">
+				<div class="day"><?=get_the_date('d'); ?></div>
+				<div class="month"><?=get_the_date('M'); ?></div>
+				<div class="year"><?=get_the_date('Y'); ?></div>
+			</div>
+		</div>
 	<?php endif; ?>
+	<div class="eleven columns<?php if(get_the_date() != $last_post) { echo " offset-top-by-one"; } else { echo " offset-by-three"; } ?>" style="background: #fff;">
+		<h2 class="no-top-margin no-top-padding"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'twentyten' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark" class="bebas"><?php the_title(); ?> <div class="right arrow_box"> </div></a></h2>
+		<?php the_excerpt(); ?>
+	</div>
 	
-	<div class="entry-utility">
-		<?php
-			$tags_list = get_the_tag_list( '', ', ' );
-			if ( $tags_list ):
-		?>
-			<span class="tag-links">
-				<?php printf( __( '<span class="%1$s">Tagged</span> %2$s', 'twentyten' ), 'entry-utility-prep entry-utility-prep-tag-links', $tags_list ); ?>
-			</span>
-		<?php endif; ?>
-		<?php edit_post_link( __( 'Edit', 'twentyten' ), '<span class="edit-link">', '</span>' ); ?>
-	</div><!-- .entry-utility -->
 
-	<?php comments_template( '', true ); ?>
-
-<?php endwhile; // End the loop. Whew. ?>
+<?php 
+	$last_post = get_the_date();
+	endwhile; // End the loop. Whew. 
+?>
 
 <?php /* Display navigation to next/previous pages when applicable */ ?>
 <?php if (  $wp_query->max_num_pages > 1 ) : ?>
-				<div id="nav-below" class="navigation">
-					<div class="nav-previous"><?php next_posts_link( __( '<span class="left arrow">&larr;</span> Older posts', 'twentyten' ) ); ?></div>
-					<div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="right arrow">&rarr;</span>', 'twentyten' ) ); ?></div>
+				<div id="nav-below" class="eleven clear-both columns offset-by-three navigation no-left-padding no-right-padding">
+					<span class="nav-previous"><?php next_posts_link( __( '&larr; Older posts', 'twentyten' ) ); ?></span>
+					<div class="nav-next right"><?php previous_posts_link( __( 'Newer posts &rarr;', 'twentyten' ) ); ?></div>
 				</div><!-- #nav-below -->
 <?php endif; ?>

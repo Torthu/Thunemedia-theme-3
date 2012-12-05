@@ -23,8 +23,9 @@ get_header(); ?>
 						foreach($sub_pages as $featured) :
 							$i++;
 							$thumb = wp_get_attachment_image_src ( get_post_thumbnail_id ( $featured->ID ), "full-thumbnail");
+							$mediaWrappeCss = get_post_custom_values('media-wrapper-css', $featured->ID);
 					?>
-							<article class="<?php if($i == 1) { echo'active ';} ?>item" style="<?=get_post_custom_values('media-wrapper-css', $featured->ID)[0]; ?>"> 
+							<article class="<?php if($i == 1) { echo'active ';} ?>item" style="<?=$mediaWrapperCss[0]; ?>"> 
 								<div class="container">
 									<a href="<?php echo get_page_link( $featured->ID ); ?>">
 										<img src="<?php echo $thumb[0]; ?>" alt="" />
@@ -45,19 +46,4 @@ get_header(); ?>
 		<h1 class="container text-center standard-padding"><?php the_title(); ?></h1>
 		<?=$post->post_content; ?>
 
-		<div class="container media-wrapper">
-		<?php foreach($sub_pages as $featured) :
-				$thumb = wp_get_attachment_image_src ( get_post_thumbnail_id ( $featured->ID ), "four-thumbnail");
-		?>
-			<article class="one-third column" style="<?=get_post_custom_values('media-wrapper-css', $featured->ID)[0]; ?>"> 
-				
-					<a href="<?php echo get_page_link( $featured->ID ); ?>">
-						<img src="<?php echo $thumb[0]; ?>" class="responsive" alt="" />
-						<!-- <h2><?php echo $featured->post_title; ?></h2> -->
-					</a>
-
-			</article>
-							
-		<?php endforeach;  ?>
-	</div>
 <?php get_footer(); ?>

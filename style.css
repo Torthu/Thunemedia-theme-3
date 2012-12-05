@@ -58,7 +58,7 @@ h1 {
 	margin-bottom: 25px;
 	/*color: #68503E;*/
 	/*color: #4B3A2E;*/
-	color: #558851;
+	color: #4B3A2E;
 	display: block;
 	text-shadow: 1px 1px 2px #fff;
 }
@@ -69,7 +69,7 @@ h2 {
 	color: #886951;
 	font-size: 30px;
 	margin-top: 16px;
-	line-height: 2.0;
+	line-height: 1.4;
 }
 
 h3 {
@@ -431,6 +431,56 @@ table.zebra {
 }
 .rounded tr:last-child td:last-child {
 	border-bottom-right-radius: 8px;
+}
+
+/*	Green box
+============================= */
+a.green-box {
+	display: inline-block;
+	height: 50px;
+	line-height: 50px;
+	width: 50px;
+	background: #558851;
+}
+	.green-box img {
+		vertical-align: middle;
+	}
+
+/*	Black box 
+============================= */
+.black-box {
+	background: #2D2926;
+	color: #fff;
+	padding-left: 25px;
+}
+
+/*	Blog meta
+============================= */
+.blog-meta {
+	text-align:center;
+}
+.date {
+	width: 100px;
+}
+.blog-meta .day {
+	font-size: 45px;
+	height: 45px;
+	line-height: 45px;
+	float:left;
+	font-family: 'Bebas Neue', Helvetica, Arial;
+	margin-right: 10px;
+	color: #67503E;
+}
+.blog-meta .month {
+	text-transform: lowercase;
+	font-size: 32px;
+	color: #67503E;
+
+}
+.blog-meta .year {
+	color: #67503E;
+	margin-top: 5px;
+	/*display: inline-block;*/
 }
 
 /*	Infobox
